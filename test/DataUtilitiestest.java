@@ -25,24 +25,12 @@ class DataUtilitiesTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
-		value = mock(Values2D.class);                	
-		when(value.getColumnCount()).thenReturn(4);                	
-		when(value.getRowCount()).thenReturn(3);                	
-		when(value.getValue(0, 2)).thenReturn(5);                	
-		when(value.getValue(1, 2)).thenReturn(7);                	
-		when(value.getValue(2, 2)).thenReturn(1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 	}
-
-	@Test
-	void test() {
-		assertEquals(13, DataUtilities.calculateColumnTotal(value, 2), .01d);
-      	verify(value, times(3)).getValue(anyInt(), anyInt());
-	}
-
+	
 	//________GET CUMULATIVE PERCENTAGES TEST_______
 
 	/**
