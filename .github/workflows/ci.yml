@@ -27,6 +27,9 @@ jobs:
           curl -L -o lib/junit-platform-console-standalone.jar \
             https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.11.4/junit-platform-console-standalone-1.11.4.jar
 
+      - name: Check lib contents
+        run: ls -la lib/
+
       - name: Compile source files
         run: |
           javac -cp "lib/*" -d bin $(find src -name "*.java")
