@@ -180,4 +180,166 @@ class DataUtilitiesTest {
         Number[][] result = DataUtilities.createNumberArray2D(new double[][]{});
         assertEquals(0, result.length);
     }
+
+		/**
+	 * Test calculateColumnTotal with normal values
+	 */
+	@Test
+	void testCalculateColumnTotalNormal() {
+		value = mock(Values2D.class);
+		when(value.getRowCount()).thenReturn(3);
+		when(value.getValue(0, 0)).thenReturn(5.0);
+		when(value.getValue(1, 0)).thenReturn(10.0);
+		when(value.getValue(2, 0)).thenReturn(15.0);
+		
+		double result = DataUtilities.calculateColumnTotal(value, 0);
+		assertEquals(30.0, result, 0.000001d);
+	}
+	
+	/**
+	 * Test calculateColumnTotal with only one row
+	 */
+	@Test
+	void testCalculateColumnTotalOneRow() {
+		value = mock(Values2D.class);
+		when(value.getRowCount()).thenReturn(1);
+		when(value.getValue(0, 0)).thenReturn(7.5);
+		
+		double result = DataUtilities.calculateColumnTotal(value, 0);
+		assertEquals(7.5, result, 0.000001d);
+	}
+	
+	/**
+	 * Test calculateColumnTotal with null values in the column
+	 */
+	@Test
+	void testCalculateColumnTotalWithNulls() {
+		value = mock(Values2D.class);
+		when(value.getRowCount()).thenReturn(3);
+		when(value.getValue(0, 0)).thenReturn(5.0);
+		when(value.getValue(1, 0)).thenReturn(null);
+		when(value.getValue(2, 0)).thenReturn(10.0);
+		
+		double result = DataUtilities.calculateColumnTotal(value, 0);
+		assertEquals(15.0, result, 0.000001d);
+	}
+	
+	/**
+	 * Test calculateColumnTotal with empty table (0 rows)
+	 */
+	@Test
+	void testCalculateColumnTotalEmptyTable() {
+		value = mock(Values2D.class);
+		when(value.getRowCount()).thenReturn(0);
+		
+		double result = DataUtilities.calculateColumnTotal(value, 0);
+		assertEquals(0.0, result, 0.000001d);
+	}
+	
+	/**
+	 * Test calculateColumnTotal with negative values
+	 */
+	@Test
+	void testCalculateColumnTotalNegativeValues() {
+		value = mock(Values2D.class);
+		when(value.getRowCount()).thenReturn(3);
+		when(value.getValue(0, 0)).thenReturn(-5.0);
+		when(value.getValue(1, 0)).thenReturn(10.0);
+		when(value.getValue(2, 0)).thenReturn(-3.0);
+		
+		double result = DataUtilities.calculateColumnTotal(value, 0);
+		assertEquals(2.0, result, 0.000001d);
+	}
+	
+	/**
+	 * Test calculateColumnTotal with null data throws exception
+	 */
+	@Test
+	void testCalculateColumnTotalNullData() {
+		assertThrows(Exception.class, () -> {
+			DataUtilities.calculateColumnTotal(null, 0);
+		});
+	}
+	
+	//________CALCULATE ROW TOTAL TESTS________
+	
+	/**
+	 * Test calculateRowTotal with normal values
+	 */
+	@Test
+	void testCalculateRowTotalNormal() {
+		value = mock(Values2D.class);
+		when(value.getColumnCount()).thenReturn(3);
+		when(value.getValue(0, 0)).thenReturn(5.0);
+		when(value.getValue(0, 1)).thenReturn(10.0);
+		when(value.getValue(0, 2)).thenReturn(15.0);
+		
+		double result = DataUtilities.calculateRowTotal(value, 0);
+		assertEquals(30.0, result, 0.000001d);
+	}
+	
+	/**
+	 * Test calculateRowTotal with only one column
+	 */
+	@Test
+	void testCalculateRowTotalOneColumn() {
+		value = mock(Values2D.class);
+		when(value.getColumnCount()).thenReturn(1);
+		when(value.getValue(0, 0)).thenReturn(7.5);
+		
+		double result = DataUtilities.calculateRowTotal(value, 0);
+		assertEquals(7.5, result, 0.000001d);
+	}
+	
+	/**
+	 * Test calculateRowTotal with null values in the row
+	 */
+	@Test
+	void testCalculateRowTotalWithNulls() {
+		value = mock(Values2D.class);
+		when(value.getColumnCount()).thenReturn(3);
+		when(value.getValue(0, 0)).thenReturn(5.0);
+		when(value.getValue(0, 1)).thenReturn(null);
+		when(value.getValue(0, 2)).thenReturn(10.0);
+		
+		double result = DataUtilities.calculateRowTotal(value, 0);
+		assertEquals(15.0, result, 0.000001d);
+	}
+	
+	/**
+	 * Test calculateRowTotal with empty table (0 columns)
+	 */
+	@Test
+	void testCalculateRowTotalEmptyTable() {
+		value = mock(Values2D.class);
+		when(value.getColumnCount()).thenReturn(0);
+		
+		double result = DataUtilities.calculateRowTotal(value, 0);
+		assertEquals(0.0, result, 0.000001d);
+	}
+	
+	/**
+	 * Test calculateRowTotal with negative values
+	 */
+	@Test
+	void testCalculateRowTotalNegativeValues() {
+		value = mock(Values2D.class);
+		when(value.getColumnCount()).thenReturn(3);
+		when(value.getValue(0, 0)).thenReturn(-5.0);
+		when(value.getValue(0, 1)).thenReturn(10.0);
+		when(value.getValue(0, 2)).thenReturn(-3.0);
+		
+		double result = DataUtilities.calculateRowTotal(value, 0);
+		assertEquals(2.0, result, 0.000001d);
+	}
+	
+	/**
+	 * Test calculateRowTotal with null data throws exception
+	 */
+	@Test
+	void testCalculateRowTotalNullData() {
+		assertThrows(Exception.class, () -> {
+			DataUtilities.calculateRowTotal(null, 0);
+		});
+	}
 }
