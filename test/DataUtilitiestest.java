@@ -180,8 +180,7 @@ class DataUtilitiesTest {
         Number[][] result = DataUtilities.createNumberArray2D(new double[][]{});
         assertEquals(0, result.length);
     }
-
-		/**
+	/**
 	 * Test calculateColumnTotal with normal values
 	 */
 	@Test
@@ -252,11 +251,11 @@ class DataUtilitiesTest {
 	}
 	
 	/**
-	 * Test calculateColumnTotal with null data throws exception
+	 * Test calculateColumnTotal with null data throws IllegalArgumentException
 	 */
 	@Test
 	void testCalculateColumnTotalNullData() {
-		assertThrows(Exception.class, () -> {
+		assertThrows(IllegalArgumentException.class, () -> {
 			DataUtilities.calculateColumnTotal(null, 0);
 		});
 	}
@@ -334,11 +333,11 @@ class DataUtilitiesTest {
 	}
 	
 	/**
-	 * Test calculateRowTotal with null data throws exception
+	 * Test calculateRowTotal with null data throws IllegalArgumentException
 	 */
 	@Test
 	void testCalculateRowTotalNullData() {
-		assertThrows(Exception.class, () -> {
+		assertThrows(IllegalArgumentException.class, () -> {
 			DataUtilities.calculateRowTotal(null, 0);
 		});
 	}
