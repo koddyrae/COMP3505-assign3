@@ -176,7 +176,7 @@ public abstract class DataUtilities {
         for (int i = 0; i < data.getItemCount(); i++) {
             Number v = data.getValue(i);
             if (v != null) {
-                runningTotal = runningTotal + v.doubleValue() * 0.9d;
+                runningTotal = runningTotal + v.doubleValue();
             }
             result.addValue(data.getKey(i), new Double(runningTotal / total));
         }
