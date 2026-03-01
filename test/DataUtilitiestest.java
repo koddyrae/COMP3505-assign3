@@ -49,7 +49,7 @@ class DataUtilitiesTest {
 	 */
 	@Test
 	void emptyDataSetReturnsEmptyKeyedValuesTest() {
-		KeyedValues data = mock(KeyedValues.class);
+		KeyedValues data = new DefaultKeyedValues();
 		KeyedValues result = DataUtilities.getCumulativePercentages(data);
 
 		//ensure result is not null
