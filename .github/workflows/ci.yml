@@ -27,6 +27,13 @@ jobs:
           curl -L -o lib/junit-platform-console-standalone.jar \
             https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.11.4/junit-platform-console-standalone-1.11.4.jar
 
+      - name: Ensure Mockito jar is present
+        run: |
+          # If mockito-all-2.0.2-beta.jar is committed to repo, this step is optional.
+          # Otherwise download it from Maven for CI:
+          curl -L -o lib/mockito-all-2.0.2-beta.jar \
+            https://repo1.maven.org/maven2/org/mockito/mockito-all/2.0.2-beta/mockito-all-2.0.2-beta.jar
+
       - name: Check lib contents
         run: ls -la lib/
 
