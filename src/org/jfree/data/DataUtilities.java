@@ -70,6 +70,9 @@ public abstract class DataUtilities {
             if (n != null) {
                 total += n.doubleValue();   
             }
+            else {
+                throw new IllegalArgumentException("Null 'data' argument.");
+            }
         }
         return total;
     }
