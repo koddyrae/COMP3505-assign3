@@ -36,7 +36,7 @@ jobs:
 
       - name: Compile test files
         run: |
-          javac -cp "bin:lib/junit-platform-console-standalone.jar:lib/mockito-all-2.0.2-beta.jar" -d bin \
+          javac -cp "bin:lib/*:lib/junit-platform-console-standalone.jar" -d bin \
             $(find test -name "*.java")
 
       - name: Run tests
